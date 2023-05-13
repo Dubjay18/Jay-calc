@@ -2,7 +2,8 @@ import { View, Text } from "react-native";
 import React from "react";
 import colors from "tailwindcss/colors";
 import { TouchableOpacity } from "react-native";
-const CusButton = ({ text, bg, sm }) => {
+const CusButton = (props) => {
+  const { text, bg, sm, onClick, ...rest } = props;
   const colorFunc = () => {
     switch (bg) {
       case "green":
@@ -18,7 +19,8 @@ const CusButton = ({ text, bg, sm }) => {
     <TouchableOpacity
       className={`rounded-[14px] p-4 w-[70px] mx-2 ${colorFunc()} ${
         sm && "h-fit !p-1"
-      }`}>
+      }`}
+      {...rest}>
       <Text
         className={`text-white ${
           !sm ? "text-xl" : "text-base"
