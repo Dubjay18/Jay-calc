@@ -1,7 +1,18 @@
-import { View, Text, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Pressable,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import { TextInput } from "react-native";
 import { initialState } from "../../../util/calculator";
+import {
+  Ionicons,
+  FontAwesome5,
+  FontAwesome,
+} from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const Screen = ({
   calValue,
@@ -12,6 +23,7 @@ const Screen = ({
   previewValue,
   setPreviewValue,
   ansColor,
+  handleBackSpace,
 }) => {
   const [calcState, setCalcState] = useState(initialState);
 
@@ -40,6 +52,17 @@ const Screen = ({
         showSoftInputOnFocus={false}
         style={[styles.input, styles.prevInput]}
       />
+      <View style={styles.backButton}>
+        <Pressable
+          onPress={() => handleBackSpace()}
+          disabled={calValue ? false : true}>
+          <Ionicons
+            name='md-backspace-outline'
+            size={24}
+            color={calValue ? "green" : "#035903"}
+          />
+        </Pressable>
+      </View>
     </View>
   );
 };
@@ -55,7 +78,7 @@ const styles = StyleSheet.create({
   input: {
     padding: 6,
     color: "black",
-    fontSize: 36,
+    fontSize: 24,
   },
   prevInput: {
     fontSize: 20,

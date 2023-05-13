@@ -32,7 +32,6 @@ const MainScreen = () => {
     setCalValue(() => remainValue);
   };
   const handlePress = (text) => {
-    console.log(text, "k");
     setIsAnswer(false);
     const corrText =
       text === "X" ? "*" : text === "+/-" ? "-" : text;
@@ -109,6 +108,7 @@ const MainScreen = () => {
           setCursorSel={setCursorSel}
           setIsCursorSel={setIsCursorSel}
           ansColor={ansColor}
+          handleBackSpace={handleBackSpace}
         />
       </View>
 
